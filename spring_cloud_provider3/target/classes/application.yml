@@ -33,5 +33,5 @@ eureka:
 info:
   app.name: spring-cloud-provider
   company.name: www.tyg.finChina.com
-  build.artifactId: spring_cloud_provider3
-  build.version: 1.0-SNAPSHOT
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$

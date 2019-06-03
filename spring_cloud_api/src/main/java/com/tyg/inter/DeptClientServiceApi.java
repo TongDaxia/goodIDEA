@@ -4,6 +4,7 @@ import com.tyg.inter.impl.DeptClientServiceFallbackFactory;
 import com.tyg.pojo.Dept;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,15 +20,17 @@ import java.util.List;
  */
 
 //@FeignClient("spring-cloud-provider")
-@FeignClient(name="spring-cloud-provider",fallbackFactory = DeptClientServiceFallbackFactory.class)
+
+@FeignClient(name = "spring-cloud-provider",
+        fallbackFactory = DeptClientServiceFallbackFactory.class)
 public interface DeptClientServiceApi {
 
     @PostMapping(value = "/dept/add")
-    public boolean add(@RequestBody Dept dept);
+    boolean add(@RequestBody Dept dept);
 
     @GetMapping(value = "/dept/get/{id}")
-    public Dept get(@PathVariable("id") Long id);
+    Dept get(@PathVariable("id") Long id);
 
     @GetMapping(value = "/dept/list")
-    public List<Dept> list();
+    List<Dept> list();
 }

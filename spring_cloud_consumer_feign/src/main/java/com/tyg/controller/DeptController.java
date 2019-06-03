@@ -21,8 +21,6 @@ public class DeptController {
     @PostMapping(value="/dept/add")
     public boolean add(@RequestBody Dept dept, HttpServletRequest request){
 
-        System.out.println("dname:"+request.getParameter("dname"));
-        System.out.println("deptno"+request.getParameter("deptno"));
         System.out.println(dept);
         return deptClientServiceApi.add(dept);
     }
@@ -35,9 +33,8 @@ public class DeptController {
 
     @RequestMapping(value = "/dept/list")
     public List<Dept> list(){
-        System.out.println("经过了List方法！");
         List<Dept> list =  deptClientServiceApi.list();
-        System.out.println("结束了！---》"+list);
+        System.out.println("结束了！--》"+list);
         return list ;
     }
 

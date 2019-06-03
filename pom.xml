@@ -94,7 +94,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.0.2</version>
                 <configuration>
                     <delimiters>
                         <!--指定动态获取以$标志开头结尾的信息-->

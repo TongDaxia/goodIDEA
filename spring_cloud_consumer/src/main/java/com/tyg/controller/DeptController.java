@@ -2,8 +2,6 @@ package com.tyg.controller;
 
 import com.tyg.pojo.Dept;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 

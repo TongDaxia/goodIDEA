@@ -12,6 +12,7 @@
     <artifactId>spring_cloud_eureka</artifactId>
 
     <dependencies>
+        <!--eureka-server服务端 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka-server</artifactId>
