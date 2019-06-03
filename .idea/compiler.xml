@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="spring_cloud_api" />
+        <module name="spring_cloud_consumer" />
+        <module name="spring_cloud_consumer_feign" />
+        <module name="spring_cloud_eureka" />
+        <module name="spring_cloud_eureka2" />
+        <module name="spring_cloud_eureka3" />
+        <module name="spring_cloud_HystrixDashboard" />
+        <module name="spring_cloud_provider" />
+        <module name="spring_cloud_provider2" />
+        <module name="spring_cloud_provider3" />
+        <module name="spring_cloud_provider_hystrix" />
+        <module name="spring_cloud_zuul" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="spring_cloud_api" target="1.8" />
+      <module name="spring_cloud_consumer" target="1.8" />
+      <module name="spring_cloud_consumer_feign" target="1.8" />
+      <module name="spring_cloud_eureka" target="1.8" />
+      <module name="spring_cloud_eureka2" target="1.8" />
+      <module name="spring_cloud_eureka3" target="1.8" />
+      <module name="spring_cloud_HystrixDashboard" target="1.8" />
+      <module name="spring_cloud_provider" target="1.8" />
+      <module name="spring_cloud_provider2" target="1.8" />
+      <module name="spring_cloud_provider3" target="1.8" />
+      <module name="spring_cloud_provider_hystrix" target="1.8" />
+      <module name="spring_cloud_root" target="1.8" />
+      <module name="spring_cloud_zuul" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

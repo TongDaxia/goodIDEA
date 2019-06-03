@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring_cloud_HystrixDashboard/spring_cloud_HystrixDashboard.iml" filepath="$PROJECT_DIR$/spring_cloud_HystrixDashboard/spring_cloud_HystrixDashboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_cloud_api/spring_cloud_api.iml" filepath="$PROJECT_DIR$/spring_cloud_api/spring_cloud_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_cloud_consumer/spring_cloud_consumer.iml" filepath="$PROJECT_DIR$/spring_cloud_consumer/spring_cloud_consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_cloud_consumer_feign/spring_cloud_consumer_feign.iml" filepath="$PROJECT_DIR$/spring_cloud_consumer_feign/spring_cloud_consumer_feign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_cloud_eureka/spring_cloud_eureka.iml" filepath="$PROJECT_DIR$/spring_cloud_eureka/spring_cloud_eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_cloud_eureka2/spring_cloud_eureka2.iml" filepath="$PROJECT_DIR$/spring_cloud_eureka2/spring_cloud_eureka2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_cloud_eureka3/spring_cloud_eureka3.iml" filepath="$PROJECT_DIR$/spring_cloud_eureka3/spring_cloud_eureka3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_cloud_provider/spring_cloud_provider.iml" filepath="$PROJECT_DIR$/spring_cloud_provider/spring_cloud_provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_cloud_provider2/spring_cloud_provider2.iml" filepath="$PROJECT_DIR$/spring_cloud_provider2/spring_cloud_provider2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_cloud_provider3/spring_cloud_provider3.iml" filepath="$PROJECT_DIR$/spring_cloud_provider3/spring_cloud_provider3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_cloud_provider_hystrix/spring_cloud_provider_hystrix.iml" filepath="$PROJECT_DIR$/spring_cloud_provider_hystrix/spring_cloud_provider_hystrix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_cloud_root.iml" filepath="$PROJECT_DIR$/spring_cloud_root.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_cloud_zuul/spring_cloud_zuul.iml" filepath="$PROJECT_DIR$/spring_cloud_zuul/spring_cloud_zuul.iml" />
+    </modules>
+  </component>
+</project>
