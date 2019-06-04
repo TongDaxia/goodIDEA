@@ -25,4 +25,4 @@ zuul:
       serviceId: spring-cloud-provider       #匹配dept.path 作为区分
       path: /api/**                          #自定义访问路径，支持通配符
   ignored-services: spring-cloud-*              #需要隐藏的服务名，可以使用通配符，配置之后通过这个微服务名访问就失效了   "*" 代表的是过滤所有带服务名称的请求
-  prefix: /prex                                      #设置统一公共前缀，设置后访问路径：http://zuul.com:8888/prex/api/dept/3
+  prefix: /pre                           #设置统一公共前缀，设置后访问路径：http://zuul.com:8888/prex/api/dept/3

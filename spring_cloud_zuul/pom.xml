@@ -12,17 +12,17 @@
     <artifactId>spring_cloud_zuul</artifactId>
 
     <dependencies>
-        <!-- zuul路由网关
+        <!-- zuul路由网关-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zuul</artifactId>
-        </dependency> -->
-        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-zuul -->
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-zuul
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zuul</artifactId>
             <version>1.3.2.RELEASE</version>
-        </dependency>
+        </dependency> -->
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>

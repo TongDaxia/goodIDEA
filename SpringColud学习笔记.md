@@ -1,22 +1,12 @@
+#### 基本模块
+
 ##### api模块：
 
 公共接口、pojo
 
-##### Consumer-80
 
-客户端负载均衡工具Ribbon
 
-Ribbon的导入：config、RandomRule
 
-注意，如果是自定义负载均衡算法，类的位置如果放在引导类外面会导致  `RestTemplate` 报找不到错误。
-
-##### Consumer-Feign-8088
-
-利用**Feign**框架做负载均衡。
-
-Feign 是基于Ribbon负载均衡的实现，Feign对Robbon进行了封装。
-
-controller("/feign/dept/list")
 
 ##### Eureka-7001
 
@@ -80,10 +70,29 @@ Hystrix主要的作用就是：服务的熔断、服务降级、服务限流、�
 
 注意，如果对应的方法出现了错误，执行了熔断方法，后续的其他请求将不会被执行，直接PASS了！
 
+##### Consumer-80
+
+客户端负载均衡工具Ribbon
+
+Ribbon的导入：config、RandomRule
+
+注意，如果是自定义负载均衡算法，类的位置如果放在引导类外面会导致  `RestTemplate` 报找不到错误。
+
+##### Consumer-Feign-8088
+
+利用**Feign**框架做负载均衡。
+
+Feign 是基于Ribbon负载均衡的实现，Feign对Robbon进行了封装。
+
+controller("/feign/dept/list")
+
 ##### Zuul-8888
 
 filter 网关。
 
+路由功能负责将外部请求转发到具体的微服务实例上，是实现外部访问统一入口的基础。
+
+过滤器功能则负责对请求的处理过程进行干预，是实现请求校验、服务聚合等功能的基础。
 
 
 
@@ -91,6 +100,7 @@ filter 网关。
 
 
 
+#### 常用地址
 
 查看服务注册情况：
 
@@ -134,3 +144,30 @@ http://localhost:8004/hystrix.stream
 
 
 
+网关，统一对外服务：
+
+http://localhost:8888/spring-cloud-zuul-gateway/dept/list
+
+http://localhost:8888/pre/api/dept/list?token=0000
+
+
+
+#### 启动顺序
+
+**eureka**: 7001,7002
+
+​	70003可以暂时不启动
+
+**provider**: 8002, 8003, **8004**
+
+​	8004是加了熔断机制的服务，可以在可视化监控中显示
+
+**consumer**: feign8088（负载均衡客户端）
+
+​	consumer80是普通消费者，不启动；
+
+**DashBoard** ：HystrixDashBoard9999(监控)
+
+**zuul网关** :  8888
+
+http://localhost:8888/pre/api/dept/get/1?token=0000
