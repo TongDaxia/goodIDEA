@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tyg.mapper.ContentMapper">
+
+    <insert id="insert" parameterType="com.tyg.pojo.Content">
+        insert into content (id, name, bang_id,
+        link, hot, change, statu,
+        range)
+        values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{bangId,jdbcType=VARCHAR},
+        #{link,jdbcType=VARCHAR}, #{hot,jdbcType=BIGINT}, #{change,jdbcType=INTEGER}, #{statu,jdbcType=VARCHAR},
+        #{range,jdbcType=INTEGER})
+    </insert>
+</mapper>

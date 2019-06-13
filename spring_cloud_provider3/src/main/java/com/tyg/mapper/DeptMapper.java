@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 
-@Component
 public interface DeptMapper {
     public boolean addDept(Dept dept);
     public Dept findById(Long id);

@@ -1,16 +1,23 @@
 package com.tyg.task;
 
-import com.tyg.util.MongoUtil;
-import org.springframework.data.mongodb.core.query.Query;
+import com.tyg.pojo.Bang;
+import com.tyg.pojo.Content;
+import com.tyg.util.IdWorker;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
-import us.codecraft.webmagic.selector.Selectable;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 
 public class BuzzProcess implements PageProcessor {
+
+    private Bang bangPub;
+    private Content contentPub;
+
+
 
     private Site site = Site.me().setRetryTimes(3).setSleepTime(100)
             .setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0").setTimeOut(100000);
@@ -30,66 +37,90 @@ public class BuzzProcess implements PageProcessor {
         // //*[@id="main"]/div[2]/div[2]/div/div/div/ul/li[2]/div[1]/a[1]
         // //*[@id="main"]/div[2]/div[2]/div/div/div/ul/li[10]/div[1]/a[1]
 
-        //今日热点
-        // //*[@id="main"]/div[3]/div[2]/div/div/div/ul/li[1]/div[1]/a[1]
-        // //*[@id="main"]/div[3]/div[2]/div/div/div/ul/li[2]/div[1]/a[1]
-        // //*[@id="main"]/div[3]/div[2]/div/div/div/ul/li[10]/div[1]/a[1]
+        // //*[@id="main"]/div[2]/div[2]/div/div/div/ul/li[1]/div[2]/div/div/a
+        // //*[@id="main"]/div[2]/div[2]/div/div/div/ul/li[1]/div[1]/a[1]
 
-        // //*[@id="main"]/div[4]/div[1]/h2/a
-        // //*[@id="main"]/div[4]/div[2]/div/div/div/ul/li[1]/div[1]/a[1]
-
-        //  //*[@id="main"]/div[5]/div[1]/h2/a
-        // //*[@id="main"]/div[4]/div[2]/div/div/div/ul/li[10]/div[1]/a[1]
-
-
-        //  //*[@id="main"]/div[8]/div[1]/h2/a
 
         ArrayList<String> title = new ArrayList<>();
-        ArrayList<String[]> content = new ArrayList<>();
+        ArrayList<String[]> contentList = new ArrayList<>();
 
         for (int i = 2; i < 8; i++) {
             title.add("//*[@id=\"main\"]/div[" + i + "]/div[1]/h2/a/text()");
             String[] contenti = new String[10];
+
             for (int j = 0; j < 10; j++) {
-                contenti[j] = "//*[@id=\"main\"]/div[" + i + "]/div[2]/div/div/div/ul/li[" + (j+1) + "]/div[1]/a[1]/text()";
+                contenti[j] = "//*[@id=\"main\"]/div[" + i + "]/div[2]/div/div/div/ul/li[" + (j + 1) + "]/div[1]/a[1]/";
+
             }
-            content.add(contenti);
+            contentList.add(contenti);
         }
 
         for (int i = 0; i < title.size(); i++) {
+            String xpath = page.getHtml().xpath(title.get(i)).toString();
 
-            String  xpath = page.getHtml().xpath(title.get(i)).toString();
-            System.out.println("分类："+xpath);
-            for (int j = 0; j < content.get(i).length; j++) {
-                Selectable s = page.getHtml().xpath(content.get(i)[j]);
-                System.out.println("排名第"+(j+1)+"的话题是："+s);
+            Bang bang = new Bang();
+            bang.setId(new IdWorker().nextId() + "");
+            bang.setCreactTime(new Date());
+            bang.setName(xpath);
+            bang.setNum(contentList.get(i).length);
+            bang.setSource(REGEX_PAGE_URL);
+            bang.setType("百度");
+
+            //TODO 保存
+            //saveB(bang);
+            bangPub = bang;
+            System.out.println("Bang名称：" + xpath);
+            for (int j = 0; j < contentList.get(i).length; j++) {
+                String s = page.getHtml().xpath(contentList.get(i)[j] + "/text()").toString();
+                String herf = page.getHtml().xpath(contentList.get(i)[j] + "/@herf").toString();
+
+                System.out.println("排名第" + (j + 1) + "的话题是：" + s);
+                System.out.println("排名第" + (j + 1) + "的话题链接是：" + herf);
+
+                Content content = new Content();
+                content.setBangId(bang.getId()).setName(s).setId(new IdWorker().nextId()).setRange(j + 1).setLink(herf);
+
+                //TODO  保存
+                //saveC(content);
+                contentPub = content;
+
             }
             System.out.println("--------------");
 
         }
-        Query query = new Query();
-
-        MongoUtil.addOrder(query,MongoUtil.ORDER_ASC);
-
-
-
 
     }
 
+
+
+    /*private void saveC(Content content) {
+
+    }
+
+    private void saveB(Bang bang) {
+
+    }*/
+
     @Override
     public Site getSite() {
-
         return site;
     }
 
 
-    public static void main(String[] args)  {
+    public synchronized  void init(){
+        long startTime, endTime;
+        System.out.println("开始爬取...");
+        startTime = System.currentTimeMillis();
         Spider.create(new BuzzProcess()).addUrl(REGEX_PAGE_URL).thread(5).run();
-
-
+        endTime = System.currentTimeMillis();
+        System.out.println("爬取结束，耗时约" + ((endTime - startTime) / 1000) + "秒");
+    }
+    public Bang getBangPub(){
+        //init();
+        return  bangPub;
     }
 
-
-    // //*[@id="main"]/div[2]/div/table/tbody/tr[2]/td[2]/a[1]
-    // //*[@id="main"]/div[2]/div/table/tbody/tr[54]/td[2]/a[1]
+    public Content getContentPub() {
+        return contentPub;
+    }
 }

@@ -32,6 +32,7 @@ public class DeptController {
 
     @Autowired
     private DiscoveryClient discoveryClient;
+
     @GetMapping("/provider/discovery")
     public Object discovery() {
         List<String> list = discoveryClient.getServices();

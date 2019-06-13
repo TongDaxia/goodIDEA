@@ -1,11 +1,9 @@
-package com.tyg.util;
+package com.tyg;
 
+import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.xml.ConfigurationParser;
 import org.mybatis.generator.internal.DefaultShellCallback;
-
-
-import org.mybatis.generator.api.MyBatisGenerator;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -18,6 +16,8 @@ public class MybatisGeneratorimpl {
         boolean overwrite = true;
         // 指定配置文件
         String path = this.getClass().getClassLoader().getResource("mybatis/generatorConfig.xml").getPath();
+        //String path = "./mybatis/generatorConfig.xml";
+        System.out.println(path);
         File configFile = new File(path);
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(configFile);
