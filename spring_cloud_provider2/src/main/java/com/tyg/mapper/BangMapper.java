@@ -8,5 +8,5 @@ import org.springframework.stereotype.Component;
 @Component
 public interface BangMapper {
     public int insert(Bang bang);
-    ;
+
 }

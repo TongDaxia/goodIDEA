@@ -3,12 +3,72 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tyg.mapper.ContentMapper">
 
-    <insert id="insert" parameterType="com.tyg.pojo.Content">
+    <!--<insert id="insert" parameterType="com.tyg.pojo.Content">
         insert into content (id, name, bang_id,
         link, hot, change, statu,
-        range)
+        rank)
         values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{bangId,jdbcType=VARCHAR},
         #{link,jdbcType=VARCHAR}, #{hot,jdbcType=BIGINT}, #{change,jdbcType=INTEGER}, #{statu,jdbcType=VARCHAR},
-        #{range,jdbcType=INTEGER})
+        #{rank,jdbcType=INTEGER})
+    </insert>-->
+
+    <insert id="insert" parameterType="com.tyg.pojo.Content">
+        insert into content
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="bangId != null">
+                bang_id,
+            </if>
+            <if test="link != null">
+                link,
+            </if>
+            <if test="hot != null">
+                hot,
+            </if>
+            <if test="change != null">
+                change,
+            </if>
+            <if test="statu != null">
+                statu,
+            </if>
+            <if test="rank != null">
+                rank,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="bangId != null">
+                #{bangId,jdbcType=VARCHAR},
+            </if>
+            <if test="link != null">
+                #{link,jdbcType=VARCHAR},
+            </if>
+            <if test="hot != null">
+                #{hot,jdbcType=BIGINT},
+            </if>
+            <if test="change != null">
+                #{change,jdbcType=INTEGER},
+            </if>
+            <if test="statu != null">
+                #{statu,jdbcType=VARCHAR},
+            </if>
+            <if test="rank != null">
+                #{rank,jdbcType=INTEGER},
+            </if>
+        </trim>
     </insert>
+
+
+
+
 </mapper>

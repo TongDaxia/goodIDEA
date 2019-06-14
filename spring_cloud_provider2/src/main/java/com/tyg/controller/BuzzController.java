@@ -1,6 +1,7 @@
 package com.tyg.controller;
 
 import com.tyg.service.BuzzService;
+import com.tyg.task.BuzzProcess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class BuzzController {
 
     @Autowired
-    private BuzzService buzzService;
+    private BuzzProcess buzzService;
 
     @GetMapping(value = "/buzz/update")
     public String add() {
         try {
-            buzzService.insertBang();
+            buzzService.init();
         } catch (Exception e) {
             e.printStackTrace();
             return "false";

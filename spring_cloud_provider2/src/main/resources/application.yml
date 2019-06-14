@@ -17,6 +17,8 @@ spring:
      # 数据库名称
      username: root
      password: root
+     test-while-idle: true
+     validation-query: SELECT 1
      dbcp2:
        min-idle: 5            # 数据库连接池的最小维持连接数
        initial-size: 5        # 初始化连接数
