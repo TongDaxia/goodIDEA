@@ -244,62 +244,52 @@ public class ContentExample {
             return (Criteria) this;
         }
 
-        public Criteria andBangIdEqualTo(String value) {
+        public Criteria andBangIdEqualTo(Integer value) {
             addCriterion("bang_id =", value, "bangId");
             return (Criteria) this;
         }
 
-        public Criteria andBangIdNotEqualTo(String value) {
+        public Criteria andBangIdNotEqualTo(Integer value) {
             addCriterion("bang_id <>", value, "bangId");
             return (Criteria) this;
         }
 
-        public Criteria andBangIdGreaterThan(String value) {
+        public Criteria andBangIdGreaterThan(Integer value) {
             addCriterion("bang_id >", value, "bangId");
             return (Criteria) this;
         }
 
-        public Criteria andBangIdGreaterThanOrEqualTo(String value) {
+        public Criteria andBangIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("bang_id >=", value, "bangId");
             return (Criteria) this;
         }
 
-        public Criteria andBangIdLessThan(String value) {
+        public Criteria andBangIdLessThan(Integer value) {
             addCriterion("bang_id <", value, "bangId");
             return (Criteria) this;
         }
 
-        public Criteria andBangIdLessThanOrEqualTo(String value) {
+        public Criteria andBangIdLessThanOrEqualTo(Integer value) {
             addCriterion("bang_id <=", value, "bangId");
             return (Criteria) this;
         }
 
-        public Criteria andBangIdLike(String value) {
-            addCriterion("bang_id like", value, "bangId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBangIdNotLike(String value) {
-            addCriterion("bang_id not like", value, "bangId");
-            return (Criteria) this;
-        }
-
-        public Criteria andBangIdIn(List<String> values) {
+        public Criteria andBangIdIn(List<Integer> values) {
             addCriterion("bang_id in", values, "bangId");
             return (Criteria) this;
         }
 
-        public Criteria andBangIdNotIn(List<String> values) {
+        public Criteria andBangIdNotIn(List<Integer> values) {
             addCriterion("bang_id not in", values, "bangId");
             return (Criteria) this;
         }
 
-        public Criteria andBangIdBetween(String value1, String value2) {
+        public Criteria andBangIdBetween(Integer value1, Integer value2) {
             addCriterion("bang_id between", value1, value2, "bangId");
             return (Criteria) this;
         }
 
-        public Criteria andBangIdNotBetween(String value1, String value2) {
+        public Criteria andBangIdNotBetween(Integer value1, Integer value2) {
             addCriterion("bang_id not between", value1, value2, "bangId");
             return (Criteria) this;
         }
@@ -564,63 +554,63 @@ public class ContentExample {
             return (Criteria) this;
         }
 
-        public Criteria andRangeIsNull() {
-            addCriterion("range is null");
+        public Criteria andRankIsNull() {
+            addCriterion("rank is null");
             return (Criteria) this;
         }
 
-        public Criteria andRangeIsNotNull() {
-            addCriterion("range is not null");
+        public Criteria andRankIsNotNull() {
+            addCriterion("rank is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRangeEqualTo(Integer value) {
-            addCriterion("range =", value, "range");
+        public Criteria andRankEqualTo(Integer value) {
+            addCriterion("rank =", value, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andRangeNotEqualTo(Integer value) {
-            addCriterion("range <>", value, "range");
+        public Criteria andRankNotEqualTo(Integer value) {
+            addCriterion("rank <>", value, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andRangeGreaterThan(Integer value) {
-            addCriterion("range >", value, "range");
+        public Criteria andRankGreaterThan(Integer value) {
+            addCriterion("rank >", value, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andRangeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("range >=", value, "range");
+        public Criteria andRankGreaterThanOrEqualTo(Integer value) {
+            addCriterion("rank >=", value, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andRangeLessThan(Integer value) {
-            addCriterion("range <", value, "range");
+        public Criteria andRankLessThan(Integer value) {
+            addCriterion("rank <", value, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andRangeLessThanOrEqualTo(Integer value) {
-            addCriterion("range <=", value, "range");
+        public Criteria andRankLessThanOrEqualTo(Integer value) {
+            addCriterion("rank <=", value, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andRangeIn(List<Integer> values) {
-            addCriterion("range in", values, "range");
+        public Criteria andRankIn(List<Integer> values) {
+            addCriterion("rank in", values, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andRangeNotIn(List<Integer> values) {
-            addCriterion("range not in", values, "range");
+        public Criteria andRankNotIn(List<Integer> values) {
+            addCriterion("rank not in", values, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andRangeBetween(Integer value1, Integer value2) {
-            addCriterion("range between", value1, value2, "range");
+        public Criteria andRankBetween(Integer value1, Integer value2) {
+            addCriterion("rank between", value1, value2, "rank");
             return (Criteria) this;
         }
 
-        public Criteria andRangeNotBetween(Integer value1, Integer value2) {
-            addCriterion("range not between", value1, value2, "range");
+        public Criteria andRankNotBetween(Integer value1, Integer value2) {
+            addCriterion("rank not between", value1, value2, "rank");
             return (Criteria) this;
         }
     }

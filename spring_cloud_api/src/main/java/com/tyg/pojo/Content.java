@@ -4,15 +4,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+@Accessors(chain = true)
 @NoArgsConstructor
 @Data
-@Accessors(chain = true)
 public class Content {
     private Long id;
 
     private String name;
 
-    private String bangId;
+    private Integer bangId;
 
     private String link;
 

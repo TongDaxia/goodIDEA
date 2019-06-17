@@ -1,9 +1,10 @@
-package com.tyg.task;
+package com.tyg.service.impl;
 
+import com.tyg.mapper.BangMapper;
+import com.tyg.mapper.ContentMapper;
 import com.tyg.pojo.Bang;
 import com.tyg.pojo.Content;
-import com.tyg.service.BuzzService;
-import com.tyg.service.ContentService;
+import com.tyg.service.BuzzBaiduSerivce;
 import com.tyg.util.IdWorker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 @Component
-public class BuzzProcess implements PageProcessor {
+public class BuzzBaiduSerivceImpl implements PageProcessor, BuzzBaiduSerivce {
 
     private Site site = Site.me().setRetryTimes(3).setSleepTime(100)
             .setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0").setTimeOut(100000);
@@ -28,9 +29,9 @@ public class BuzzProcess implements PageProcessor {
 
 
     @Autowired
-    private BuzzService buzzService;
+    private BangMapper bangMapper;
     @Autowired
-    private ContentService contentService;
+    private ContentMapper contentMapper;
 
     @Override
     public void process(Page page) {
@@ -67,7 +68,6 @@ public class BuzzProcess implements PageProcessor {
             }
 
             Bang bang = new Bang();
-            bang.setId(new IdWorker().nextId() + "");
             bang.setCreactTime(new Date());
             bang.setName(xpath);
             bang.setNum(contentList.get(i).length);
@@ -75,23 +75,19 @@ public class BuzzProcess implements PageProcessor {
             bang.setType("百度");
 
             //TODO 保存
-            try {
-                this.buzzService.insertBang(bang);
-            } catch (Exception e) {
-                e.printStackTrace();
-                return;
-            }
+
+            bangMapper.insertSelective(bang);
 
             System.out.println("Bang名称：" + xpath);
             for (int j = 0; j < contentList.get(i).length; j++) {
                 String s = page.getHtml().xpath(contentList.get(i)[j] + "/@title").toString();
-                String herf = "https://www.baidu.com/s?&wd="+s;
+                String herf = "https://www.baidu.com/s?&wd=" + s;
                 if (s == null || s.equals("")) {
                     continue;
                 }
                 try {
                     String encode = URLEncoder.encode(s, "utf-8");
-                    herf = "https://www.baidu.com/s?&wd="+encode;
+                    herf = "https://www.baidu.com/s?&wd=" + encode;
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -102,7 +98,7 @@ public class BuzzProcess implements PageProcessor {
                 content.setBangId(bang.getId()).setName(s).
                         setId(new IdWorker().nextId()).setLink(herf).setRank(j + 1);
                 //TODO  保存
-                contentService.insertContent(content);
+                contentMapper.insertSelective(content);
             }
             System.out.println("--------------");
 
@@ -116,8 +112,11 @@ public class BuzzProcess implements PageProcessor {
         return site;
     }
 
-    @Scheduled(cron="0 0/20 * * * ? ")
-    public synchronized void init() {
+
+
+    //@Scheduled(cron = "0 0/20 * * * ? ")//每20分钟跑一次
+    @Override
+    public void insertBang() {
         long startTime, endTime;
         System.out.println("开始爬取...");
         startTime = System.currentTimeMillis();
@@ -125,6 +124,4 @@ public class BuzzProcess implements PageProcessor {
         endTime = System.currentTimeMillis();
         System.out.println("爬取结束，耗时约" + ((endTime - startTime) / 1000) + "秒");
     }
-
-
 }

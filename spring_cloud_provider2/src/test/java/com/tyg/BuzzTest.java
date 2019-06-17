@@ -58,7 +58,6 @@ public class BuzzTest implements PageProcessor {
             }
 
             Bang bang = new Bang();
-            bang.setId(new IdWorker().nextId() + "");
             bang.setCreactTime(new Date());
             bang.setName(xpath);
             bang.setNum(contentList.get(i).length);

@@ -5,13 +5,12 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.util.Date;
-import java.util.List;
 
+@Accessors(chain = true)
 @NoArgsConstructor
 @Data
-@Accessors(chain = true)
 public class Bang {
-    private String name;
+    private Integer id;
 
     private String type;
 
@@ -19,7 +18,7 @@ public class Bang {
 
     private Date creactTime;
 
-    private String id;
+    private String name;
 
     private Integer num;
 
@@ -27,6 +26,5 @@ public class Bang {
 
     private Integer version;
 
-    private List<Content> contents ;
 
 }

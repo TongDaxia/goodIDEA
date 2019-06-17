@@ -1,71 +1,258 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tyg.mapper.BangMapper">
-
-   <!-- <insert id="insert" parameterType="com.tyg.pojo.Bang" useGeneratedKeys="true" keyProperty="version">
-        insert into bang (version, type, source,
-        creact_time, id, name,
-        num, statu)
-        values (#{version,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR},
-        #{creactTime,jdbcType=TIMESTAMP}, #{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
-        #{num,jdbcType=INTEGER}, #{statu,jdbcType=VARCHAR})
-    </insert>-->
-
-    <insert id="insert" parameterType="com.tyg.pojo.Bang" useGeneratedKeys="true" keyProperty="version">
+  <resultMap id="BaseResultMap" type="com.tyg.pojo.Bang">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="creact_time" jdbcType="TIMESTAMP" property="creactTime" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="statu" jdbcType="VARCHAR" property="statu" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, type, source, creact_time, name, num, statu, version
+  </sql>
+  <select id="selectByExample" parameterType="com.tyg.pojo.BangExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from bang
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bang
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bang
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tyg.pojo.BangExample">
+    delete from bang
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tyg.pojo.Bang"  useGeneratedKeys="true" keyProperty="id">
+    insert into bang (id, type, source, 
+      creact_time, name, num, 
+      statu, version)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
+      #{creactTime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, #{num,jdbcType=INTEGER}, 
+      #{statu,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tyg.pojo.Bang"  useGeneratedKeys="true" keyProperty="id">
     insert into bang
     <trim prefix="(" suffix=")" suffixOverrides=",">
-        <if test="version != null">
-            version,
-        </if>
-        <if test="type != null">
-            type,
-        </if>
-        <if test="source != null">
-            source,
-        </if>
-        <if test="creactTime != null">
-            creact_time,
-        </if>
-        <if test="id != null">
-            id,
-        </if>
-        <if test="name != null">
-            name,
-        </if>
-        <if test="num != null">
-            num,
-        </if>
-        <if test="statu != null">
-            statu,
-        </if>
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="creactTime != null">
+        creact_time,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="statu != null">
+        statu,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-        <if test="version != null">
-            #{version,jdbcType=INTEGER},
-        </if>
-        <if test="type != null">
-            #{type,jdbcType=VARCHAR},
-        </if>
-        <if test="source != null">
-            #{source,jdbcType=VARCHAR},
-        </if>
-        <if test="creactTime != null">
-            #{creactTime,jdbcType=TIMESTAMP},
-        </if>
-        <if test="id != null">
-            #{id,jdbcType=VARCHAR},
-        </if>
-        <if test="name != null">
-            #{name,jdbcType=VARCHAR},
-        </if>
-        <if test="num != null">
-            #{num,jdbcType=INTEGER},
-        </if>
-        <if test="statu != null">
-            #{statu,jdbcType=VARCHAR},
-        </if>
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="creactTime != null">
+        #{creactTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="statu != null">
+        #{statu,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
     </trim>
-    </insert>
-
+  </insert>
+  <select id="countByExample" parameterType="com.tyg.pojo.BangExample" resultType="java.lang.Long">
+    select count(*) from bang
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update bang
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.source != null">
+        source = #{record.source,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creactTime != null">
+        creact_time = #{record.creactTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.num != null">
+        num = #{record.num,jdbcType=INTEGER},
+      </if>
+      <if test="record.statu != null">
+        statu = #{record.statu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.version != null">
+        version = #{record.version,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update bang
+    set id = #{record.id,jdbcType=INTEGER},
+      type = #{record.type,jdbcType=VARCHAR},
+      source = #{record.source,jdbcType=VARCHAR},
+      creact_time = #{record.creactTime,jdbcType=TIMESTAMP},
+      name = #{record.name,jdbcType=VARCHAR},
+      num = #{record.num,jdbcType=INTEGER},
+      statu = #{record.statu,jdbcType=VARCHAR},
+      version = #{record.version,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tyg.pojo.Bang">
+    update bang
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="creactTime != null">
+        creact_time = #{creactTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="statu != null">
+        statu = #{statu,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tyg.pojo.Bang">
+    update bang
+    set type = #{type,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      creact_time = #{creactTime,jdbcType=TIMESTAMP},
+      name = #{name,jdbcType=VARCHAR},
+      num = #{num,jdbcType=INTEGER},
+      statu = #{statu,jdbcType=VARCHAR},
+      version = #{version,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>
