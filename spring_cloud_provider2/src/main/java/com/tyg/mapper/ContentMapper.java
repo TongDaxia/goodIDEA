@@ -2,13 +2,12 @@ package com.tyg.mapper;
 
 import com.tyg.pojo.Content;
 import com.tyg.pojo.ContentExample;
-import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
 
-@Component
+import java.util.List;
+
+
 @Mapper
 public interface ContentMapper {
     long countByExample(ContentExample example);

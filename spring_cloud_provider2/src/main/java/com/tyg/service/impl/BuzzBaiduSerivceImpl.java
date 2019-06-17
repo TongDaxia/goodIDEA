@@ -95,8 +95,7 @@ public class BuzzBaiduSerivceImpl implements PageProcessor, BuzzBaiduSerivce {
                 System.out.println("排名第" + (j + 1) + "的话题链接是：" + herf);
 
                 Content content = new Content();
-                content.setBangId(bang.getId()).setName(s).
-                        setId(new IdWorker().nextId()).setLink(herf).setRank(j + 1);
+                content.setBangId(bang.getId()).setName(s).setLink(herf).setRank(j + 1);
                 //TODO  保存
                 contentMapper.insertSelective(content);
             }
@@ -106,12 +105,10 @@ public class BuzzBaiduSerivceImpl implements PageProcessor, BuzzBaiduSerivce {
 
     }
 
-
     @Override
     public Site getSite() {
         return site;
     }
-
 
 
     //@Scheduled(cron = "0 0/20 * * * ? ")//每20分钟跑一次
