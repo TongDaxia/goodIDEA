@@ -11,3 +11,6 @@ Desktop.ini
 /.idea/workspace.xml
 /.idea/inspectionProfiles
 /.idea/libraries
+/.settings
+/.project
+/spring_cloud_consumer/.settings
