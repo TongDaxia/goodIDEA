@@ -31,3 +31,6 @@ Desktop.ini
 /spring_cloud_provider3/.settings
 /spring_cloud_zuul/.settings
 
+/spring_cloud_provider3/.settings
+/spring_cloud_provider2/.settings
+/spring_cloud_provider_hystrix/.settings
