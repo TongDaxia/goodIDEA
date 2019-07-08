@@ -13,14 +13,21 @@ Desktop.ini
 /.idea/libraries
 /.settings
 /.project
-/**/.settings
-*/*/.settings
-**/.settings
-*/.settings
 
-/spring_cloud_eureka/.settings
+
+/spring_cloud_api/.settings
+/spring_cloud_consumer/.settings
 /spring_cloud_consumer_feign/.settings
+/spring_cloud_eureka/.settings
 /spring_cloud_eureka2/.settings
 /spring_cloud_eureka3/.settings
+
 /spring_cloud_HystrixDashboard/.settings
 /spring_cloud_provider/.settings
+/spring_cloud_provider_hystrix/.settings
+
+/spring_cloud_provider/.settings
+/spring_cloud_provider2/.settings
+/spring_cloud_provider3/.settings
+/spring_cloud_zuul/.settings
+
