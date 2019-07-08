@@ -13,4 +13,5 @@ Desktop.ini
 /.idea/libraries
 /.settings
 /.project
-/spring_cloud_consumer/.settings
+/*/.settings
+
