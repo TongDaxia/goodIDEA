@@ -12,7 +12,7 @@ public class DownloadUtil {
      * @param name   文件保存后的名称
      * @param addr   文件保存的位置
      */
-    public static void download(String urlStr, String name, String addr) {
+    public synchronized  static void download(String urlStr, String name, String addr) {
 
 
         URL url = null;
@@ -29,7 +29,6 @@ public class DownloadUtil {
             }
             out.close();
             in.close();
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
