@@ -76,3 +76,6 @@ target
 /spring_cloud_api/.project
 /spring_cloud_api/spring_cloud_api.iml
 /spring_cloud_api/.classpath
+/spring_cloud_api/.gitignore
+/spring_cloud_api/.project
+/spring_cloud_api/.classpath
