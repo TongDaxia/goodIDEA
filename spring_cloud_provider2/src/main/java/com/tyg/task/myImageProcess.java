@@ -70,7 +70,7 @@ public class myImageProcess implements PageProcessor {
                  * String 保存路径
                  */
                 if (picURL != null) {
-                    DownloadUtil.download(picURL, picname + ".jpg", "E:\\img\\");
+                    DownloadUtil.download(picURL, picname + ".jpg", "F:\\img\\");
                     System.out.println("第" + (INDEX_PHOTO++) + "张");
                 }
             } catch (Exception e) {
