@@ -72,3 +72,7 @@ target
 /spring_cloud_provider3/target
 /spring_cloud_zuul/target
 /spring_cloud_zuul/spring_cloud_zuul.iml
+/spring_cloud_api/.gitignore
+/spring_cloud_api/.project
+/spring_cloud_api/spring_cloud_api.iml
+/spring_cloud_api/.classpath
