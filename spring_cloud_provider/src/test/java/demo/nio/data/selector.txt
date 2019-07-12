@@ -1,0 +1,56 @@
+用单个线程来处理多个Channels的好处是，
+只需要更少的线程来处理通道。
+
+对于操作系统来说，线程之间上下文切换的开销很大，
+而且每个线程都要占用系统的一些资源（如内存）。
+因此，使用的线程越少越好。
+现代的操作系统和CPU在多任务方面表现的越来越好，
+所以多线程的开销随着时间的推移，变得越来越小了。
+
+如果一个CPU有多个内核，不使用多任务可能是在浪费CPU能力。
+
+Selector selector = Selector.open();
+channel.configureBlocking(false);
+SelectionKey key = channel.register(selector, SelectionKey.OP_READ);
+while(true) {
+
+  int readyChannels = selector.select();
+
+  if(readyChannels == 0) continue;
+
+  Set selectedKeys = selector.selectedKeys();
+
+  Iterator keyIterator = selectedKeys.iterator();
+
+  while(keyIterator.hasNext()) {
+
+    SelectionKey key = keyIterator.next();
+
+  if(key.isAcceptable()) {
+
+      // a connection was accepted by a ServerSocketChannel.
+
+  } else if (key.isConnectable()) {
+
+      // a connection was established with a remote server.
+
+  } else if (key.isReadable()) {
+
+      // a channel is ready for reading
+
+  } else if (key.isWritable()) {
+
+      // a channel is ready for writing
+
+    }
+
+  keyIterator.remove();
+
+}
+
+}
+
+
+
+
+
