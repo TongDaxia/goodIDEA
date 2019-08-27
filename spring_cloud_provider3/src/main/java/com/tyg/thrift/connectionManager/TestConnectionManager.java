@@ -1,7 +1,7 @@
 package com.tyg.thrift.connectionManager;
 
 import com.tyg.thrift.TestService;
-import com.tyg.thrift.connectionFactory.TestConnectionFactory;
+import com.tyg.thrift.connectionFactory.TestConnectionFactory01;
 import org.apache.commons.pool2.impl.AbandonedConfig;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
@@ -23,7 +23,7 @@ public class TestConnectionManager {
         if (pool == null || pool.isClosed()) {
             synchronized (TestConnectionManager.class) {
                 if (pool == null || pool.isClosed()) {
-                    TestConnectionFactory connectionFactory = new TestConnectionFactory();
+                    TestConnectionFactory01 connectionFactory = new TestConnectionFactory01();
                     // 基本配置
                     GenericObjectPoolConfig config = new GenericObjectPoolConfig();
                     config.setMaxIdle(20);   //最大空闲数量

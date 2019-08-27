@@ -6,11 +6,11 @@ import org.apache.thrift.transport.TServerSocket;
 import org.apache.thrift.transport.TServerTransport;
 import org.apache.thrift.transport.TTransportException;
 
-public class Server {
+public class Server01 {
 
     public static void main( String[] args ){
         try {
-            TestService.Processor processor = new TestService.Processor(new TestServiceHandler());
+            TestService.Processor processor = new TestService.Processor(new TestServiceHandler01());
             int port = 9090;
             TServerTransport serverTransport = new TServerSocket(port);
             TServer server = new TSimpleServer(new TServer.Args(serverTransport).processor(processor));

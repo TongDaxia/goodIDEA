@@ -2,7 +2,7 @@ package com.tyg.thrift;
 
 import org.apache.thrift.TException;
 
-public class TestServiceHandler implements TestService.Iface {
+public class TestServiceHandler01 implements TestService.Iface {
 
     int i = 0;
 

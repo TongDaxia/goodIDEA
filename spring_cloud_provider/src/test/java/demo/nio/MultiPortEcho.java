@@ -1,4 +1,4 @@
-// $Id$
+package demo.nio;// $Id$
 
 import java.io.*;
 import java.net.*;
@@ -8,12 +8,11 @@ import java.util.*;
 
 public class MultiPortEcho
 {
-  private int ports[];
+  private int ports[] ={11021,11022,11023} ;
   private ByteBuffer echoBuffer = ByteBuffer.allocate( 1024 );
 
   public MultiPortEcho( int ports[] ) throws IOException {
     this.ports = ports;
-
     go();
   }
 
@@ -92,12 +91,9 @@ public class MultiPortEcho
   }
 
   static public void main( String args[] ) throws Exception {
-    if (args.length<=0) {
-      System.err.println( "Usage: java MultiPortEcho port [port port ...]" );
-      System.exit( 1 );
-    }
 
-    int ports[] = new int[args.length];
+
+    int ports[] = {11021,11022,11023} ;
 
     for (int i=0; i<args.length; ++i) {
       ports[i] = Integer.parseInt( args[i] );

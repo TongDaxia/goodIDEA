@@ -1,4 +1,4 @@
-// $Id$
+package demo.nio;// $Id$
 
 import java.io.*;
 import java.nio.*;
@@ -8,8 +8,9 @@ import java.nio.charset.*;
 public class UseCharsets
 {
   static public void main( String args[] ) throws Exception {
-    String inputFile = "samplein.txt";
-    String outputFile = "sampleout.txt";
+    //\spring_cloud_provider\src\test\java\demo\nio\data
+    String inputFile = "spring_cloud_provider/src/test/java/demo/nio/data/samplein.txt";
+    String outputFile = "spring_cloud_provider/src/test/java/demo/nio/data/sampleout.txt";
 
     RandomAccessFile inf = new RandomAccessFile( inputFile, "r" );
     RandomAccessFile outf = new RandomAccessFile( outputFile, "rw" );

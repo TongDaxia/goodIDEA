@@ -10,7 +10,7 @@ public class WriteSomeBytes
                                           98, 121, 116, 101, 115, 46 };
 
   static public void main( String args[] ) throws Exception {
-    FileOutputStream fout = new FileOutputStream( "writesomebytes.txt" );
+    FileOutputStream fout = new FileOutputStream( "spring_cloud_provider/src/test/java/demo/nio/data/writesomebytes.txt" );
 
     FileChannel fc = fout.getChannel();
 

@@ -1,7 +1,7 @@
 package com.tyg.thrift;
 
 
-import com.tyg.thrift.connectionFactory.TestConnectionFactory;
+import com.tyg.thrift.connectionFactory.TestConnectionFactory01;
 import com.tyg.thrift.connectionManager.TestConnectionManager;
 import org.apache.commons.pool2.impl.AbandonedConfig;
 import org.apache.commons.pool2.impl.GenericObjectPool;
@@ -11,15 +11,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class TestClient {
-    private static final Logger logger = LoggerFactory.getLogger(TestClient.class);
+public class TestClient01 {
+    private static final Logger logger = LoggerFactory.getLogger(TestClient01.class);
     private static GenericObjectPool<TestService.Client> pool;
 
     private static void init() {
         if (pool == null || pool.isClosed()) {
-            synchronized (TestClient.class) {
+            synchronized (TestClient01.class) {
                 if (pool == null || pool.isClosed()) {
-                    TestConnectionFactory connectionFactory = new TestConnectionFactory();
+                    TestConnectionFactory01 connectionFactory = new TestConnectionFactory01();
                     // 基本配置
                     GenericObjectPoolConfig config = new GenericObjectPoolConfig();
                     config.setMaxIdle(10);   //最大空闲数量

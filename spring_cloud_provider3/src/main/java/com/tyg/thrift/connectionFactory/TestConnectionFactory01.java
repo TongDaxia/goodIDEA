@@ -10,7 +10,7 @@ import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 
 
-public class TestConnectionFactory extends BasePooledObjectFactory<TestService.Client> {
+public class TestConnectionFactory01 extends BasePooledObjectFactory<TestService.Client> {
     @Override
     public TestService.Client create() throws Exception {
 

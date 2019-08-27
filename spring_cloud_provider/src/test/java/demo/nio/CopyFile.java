@@ -3,7 +3,7 @@ package demo.nio;// $Id$
 import java.io.*;
 import java.nio.*;
 import java.nio.channels.*;
-
+@SuppressWarnings("all")
 public class CopyFile {
     static public void main(String args[] ) throws Exception {
 
@@ -14,6 +14,26 @@ public class CopyFile {
         FileInputStream fin = new FileInputStream(infile);
         FileOutputStream fout = new FileOutputStream(outfile);
 
+
+        // 新建文件输出流并对它进行缓冲;利用缓存提高流的效率
+        BufferedInputStream inBuff=new BufferedInputStream(fin);
+        BufferedOutputStream outBuff=new BufferedOutputStream(fout);
+
+        byte[] arr = new byte[1024];
+
+        while (true) {
+            int read = inBuff.read(arr);
+            if (read == -1) {
+                break;
+            }
+            outBuff.write(arr,0,read);
+            outBuff.flush();
+        }
+
+
+
+
+        //Nio 使用channel 管道
         FileChannel fcin = fin.getChannel();
         FileChannel fcout = fout.getChannel();
 

@@ -1,4 +1,4 @@
-// $Id$
+package demo.nio;// $Id$
 
 import java.io.*;
 import java.nio.*;
@@ -17,14 +17,14 @@ public class UseFileLocks
     // Get lock
     System.out.println( "trying to get lock" );
     FileLock lock = fc.lock( start, end, false );
-    System.out.println( "got lock!" );
+    System.out.println( "现在时间："+System.currentTimeMillis()+"got lock!" );
 
     // Pause
     System.out.println( "pausing" );
     try { Thread.sleep( 3000 ); } catch( InterruptedException ie ) {}
 
     // Release lock
-    System.out.println( "going to release lock" );
+    System.out.println( "现在时间："+System.currentTimeMillis()+ "going to release lock" );
     lock.release();
     System.out.println( "released lock" );
 
