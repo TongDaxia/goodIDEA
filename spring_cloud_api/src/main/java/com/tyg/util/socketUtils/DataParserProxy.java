@@ -1,7 +1,7 @@
 package com.tyg.util.socketUtils;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+//import net.sf.json.JSONArray;
+//import net.sf.json.JSONObject;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -46,15 +46,15 @@ public class DataParserProxy {
 		
 		byte b = buff.get();
 		if(b=='{'){//纯粹json
-			JSONObject obj = JSONObject.fromObject(new String(buff.array(),"UTF-8"));
-			List<List<Object>> result = new ArrayList<List<Object>>();
-			JSONArray head = (JSONArray) obj.get("headers");
-			result.add((List<Object>) JSONArray.toList(head));
-			JSONArray table = (JSONArray) obj.get("table");
-			result.addAll((List<List<Object>>) JSONArray.toList(table));
-			
-			resultList = new ArrayList<List<List<Object>>>();
-			resultList.add(result);
+//			JSONObject obj = JSONObject.fromObject(new String(buff.array(),"UTF-8"));
+//			List<List<Object>> result = new ArrayList<List<Object>>();
+//			JSONArray head = (JSONArray) obj.get("headers");
+//			result.add((List<Object>) JSONArray.toList(head));
+//			JSONArray table = (JSONArray) obj.get("table");
+//			result.addAll((List<List<Object>>) JSONArray.toList(table));
+//
+//			resultList = new ArrayList<List<List<Object>>>();
+//			resultList.add(result);
 		}
 //		else if(b==DATA_JSON){
 //			

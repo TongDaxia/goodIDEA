@@ -1,5 +1,12 @@
 package com.tyg;
 
+/**
+ * 8皇后问题
+ * 在 8*8 的方格中，放置8个皇后，要求皇后的横纵和对角均不能有其他皇后
+ * 使用的就是回溯的思想和迭代的编程技巧
+ * 需要多多体会才行
+ *
+ */
 public class Cal8Queen {
     int[] result = new int[8];//全局或成员变量,下标表示行,值表示queen存储在哪一列
     public void cal8queens(int row) { // 调用方式：cal8queens(0);
@@ -17,14 +24,18 @@ public class Cal8Queen {
     private boolean isOk(int row, int column) {//判断row行column列放置是否合适
         int leftup = column - 1, rightup = column + 1;
         for (int i = row-1; i >= 0; --i) { // 逐行往上考察每一行
-            if (result[i] == column) return false; // 第i行的column列有棋子吗？
+            if (result[i] == column)
+                return false; // 第i行的column列有棋子吗？
             if (leftup >= 0) { // 考察左上对角线：第i行leftup列有棋子吗？
-                if (result[i] == leftup) return false;
+                if (result[i] == leftup)
+                    return false;
             }
             if (rightup < 8) { // 考察右上对角线：第i行rightup列有棋子吗？
-                if (result[i] == rightup) return false;
+                if (result[i] == rightup)
+                    return false;
             }
-            --leftup; ++rightup;
+            --leftup;
+            ++rightup;
         }
         return true;
     }
@@ -37,5 +48,9 @@ public class Cal8Queen {
             System.out.println();
         }
         System.out.println();
+    }
+
+    public static void main(String[] args) {
+       new Cal8Queen().cal8queens(0);
     }
 }
