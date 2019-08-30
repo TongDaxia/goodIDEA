@@ -1,4 +1,4 @@
-package com.tyg;
+package com.tyg.calTest;
 
 public class StringContains {
 

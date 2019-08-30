@@ -1,4 +1,4 @@
-package com.tyg;
+package com.tyg.Cal;
 
 /**
  * 8皇后问题

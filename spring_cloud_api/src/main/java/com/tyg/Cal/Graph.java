@@ -1,5 +1,6 @@
 package com.tyg.Cal;
 
+import java.util.BitSet;
 import java.util.LinkedList;
 
 public class Graph {
@@ -78,6 +79,10 @@ public class Graph {
     }
 
     public void dijkstra(int s, int t) { // 从顶点s到顶点t的最短路径
+
+        BitSet bitSet = new BitSet(434);
+        jdk.nashorn.internal.runtime.regexp.joni.BitSet bitSet1 = new jdk.nashorn.internal.runtime.regexp.joni.BitSet();
+
         int[] predecessor = new int[this.v]; // 用来还原最短路径
         Vertex[] vertexes = new Vertex[this.v];
         for (int i = 0; i < this.v; ++i) {
