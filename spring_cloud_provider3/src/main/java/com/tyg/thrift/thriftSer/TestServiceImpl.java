@@ -1,6 +1,6 @@
 package com.tyg.thrift.thriftSer;
 
-import net.sf.json.JSONObject;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.thrift.TProcessor;
