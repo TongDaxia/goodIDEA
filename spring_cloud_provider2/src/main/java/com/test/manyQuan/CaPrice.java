@@ -9,7 +9,7 @@ public class CaPrice {
 
         Quan A = new Quan();
         A.setId("A");
-        A.setLow(15);
+        A.setLow(25);
         A.setSubprice(5);
         Quan B = new Quan();
         B.setId("B");
@@ -162,11 +162,11 @@ public class CaPrice {
         System.out.println("订单情况：");
         List<OrderSku> skus1 = o.getSkus();
         for (OrderSku orderSku : skus1) {
-
-            System.out.println("" + orderSku.getPrice() + /*orderSku.getQuans()*/"------->" + orderSku.getPriceTrue());
+            String key = orderSku.getTarget() == null? "无" : orderSku.getTarget().getId();
+            System.out.println("" + orderSku.getPrice() + "---" + key + "---->" + orderSku.getPriceTrue());
         }
 
-
+        System.out.println(o.getSkus());
         return o;
 
     }
