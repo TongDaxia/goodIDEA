@@ -1,13 +1,14 @@
 package com.test.ttest;
 
-public class ServiceImplOne extends ServiceImpl {
+public class ServiceImplOne extends ServiceBaseDecorator {
 
 
     public ServiceImplOne(Service service) {
-        super();
+        super(service);
     }
 
     public void test() {
+        super.test();
         System.out.println("One————————");
     }
 
