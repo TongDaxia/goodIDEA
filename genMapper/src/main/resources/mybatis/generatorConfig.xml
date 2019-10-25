@@ -8,10 +8,15 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!-- Mysql数据库连接的信息：驱动类、连接地址、用户名、密码 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/demo01"
-                        userId="root"
-                        password="root">
+        <!-- <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                         connectionURL="jdbc:mysql://localhost:3306/demo01"
+                         userId="root"
+                         password="root">
+         </jdbcConnection>-->
+         <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                        connectionURL="jdbc:sqlserver://localhost:1433;databaseName=ssm_framework"
+                        userId="read"
+                        password="read">
         </jdbcConnection>
         <!-- Oracle数据库
             <jdbcConnection driverClass="oracle.jdbc.OracleDriver"
@@ -48,9 +53,7 @@
         </javaClientGenerator>
 
         <!-- 指定数据表 -->
-        <table schema="" tableName="bang">
-
-        </table>
+        <table schema="" tableName="bang"></table>
         <table schema="" tableName="content"></table>
 
 

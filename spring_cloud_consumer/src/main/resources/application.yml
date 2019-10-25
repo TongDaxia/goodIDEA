@@ -13,3 +13,26 @@ ribbon:
   OkToRetryOnAllOperations: false  #对所有操作请求都进行重试，如果是get则可以，如果是post，put等操作没有实现幂等的情况下是很危险的,所以设置为false
   ConnectTimeout: 5000  #请求连接的超时时间
   ReadTimeout: 6000 #请求处理的超时时间
+
+
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml             # mybatis配置文件所在路径
+  type-aliases-package: com.baiyue.springcloud.entity           # 所有Entity别名类所在包
+  mapper-locations: mybatis/mapper/**/*.xml                           # mapper映射文件
+
+
+spring:
+   application:
+    name: microservicecloud-dept 
+   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver: com.microsoft.sqlserver.jdbc.SQLServerDriver            # mysql驱动包
+    url: jdbc:sqlserver://localhost:1433           # 数据库名称
+    username: read
+    password: read
+    dbcp2:
+      min-idle: 5                                           # 数据库连接池的最小维持连接数
+      initial-size: 5                                       # 初始化连接数
+      max-total: 5                                          # 最大连接数
+      max-wait-millis: 200                                  # 等待连接获取的最大超时时间
