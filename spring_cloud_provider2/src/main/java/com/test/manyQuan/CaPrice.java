@@ -94,7 +94,7 @@ public class CaPrice {
                 return o1.getValue() - o2.getValue() >= 0 ? 1 : -1;  //按照性价比从大到小
             }
         });
-        System.out.println("按照性价比从大到小quans:" + quans);
+        //System.out.println("按照性价比从大到小quans:" + quans);
 
         HashMap<Quan, List<OrderSku>> quans_order = new HashMap<>();
         //List<OrderSku> no_quans_order = new ArrayList<>();
