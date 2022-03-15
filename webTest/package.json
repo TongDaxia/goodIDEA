@@ -16,7 +16,7 @@
     "fastclick": "^1.0.6",
     "iscroll": "^5.2.0",
     "lodash": "^4.17.11",
-    "lodash-es": "^4.17.10",
+    "lodash-es": "^4.17.21",
     "mint-ui": "^2.2.13",
     "normalize.css": "^8.0.0",
     "vue": "^2.5.16",
